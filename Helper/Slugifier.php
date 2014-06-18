@@ -30,7 +30,7 @@ class Slugifier
 
         $text = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $text);
         $text = strtolower(trim($text, $delimiter));
-        $text = preg_replace("/[\/_|+ -]+/", $delimiter, $text);
+        $text = preg_replace("/[_|+ -]+/", $delimiter, $text);
 
         if (empty($text)) {
             return empty($default) ? '' : $default;
