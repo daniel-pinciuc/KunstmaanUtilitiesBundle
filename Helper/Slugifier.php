@@ -15,16 +15,15 @@ class Slugifier
      *
      * @return string
      */
-    public static function slugify($text, $default = 'n-a', $replace = array("'"), $delimiter = '-')
+    public static function slugify($text, $locale = 'de_DE', $default = 'n-a', $replace = array("'"), $delimiter = '-')
     {
         if (!empty($replace)) {
             $text = str_replace($replace, ' ', $text);
         }
-
         // transliterate
         if (function_exists('iconv')) {
             $previouslocale = setlocale(LC_CTYPE, 0);
-            setlocale(LC_CTYPE, 'en_US.UTF8');
+            setlocale(LC_CTYPE, $locale.'.UTF8');
             $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
             setlocale(LC_CTYPE, $previouslocale);
         }
