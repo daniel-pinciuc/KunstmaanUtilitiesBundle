@@ -15,7 +15,7 @@ class Slugifier
      *
      * @return string
      */
-    public static function slugify($text, $locale = 'de_DE', $default = 'n-a', $replace = array("'"), $delimiter = '-')
+    public static function slugify($text, $default = 'n-a', $replace = array("'"), $delimiter = '-', $locale = 'de_DE')
     {
         if (!empty($replace)) {
             $text = str_replace($replace, ' ', $text);
